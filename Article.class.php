@@ -10,9 +10,9 @@ declare(strict_types=1);
 /** Apres je vais ajouter la date**/
 class Article{
 
-    private string $titre;
-    private string $content;
-    private string $auteur;
+    private  $titre;
+    private  $content;
+    private  $auteur;
 
 
     public function __construct(string $titre,string $content, string $auteur){

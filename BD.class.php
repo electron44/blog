@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 class BD{
+    
     private $host;
     private $mdp;
     private $dbName;
@@ -21,13 +22,15 @@ class BD{
 
     private  function getPDO () : PDO {
         if($this->pdo===null){
-             $pdo = new PDO('mysql:dbname=entreprise;host=localhost','root','');
+             $pdo = new PDO('mysql:dbname=blog;host=localhost','root','');
             $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }
         return $this->pdo;
     }
-
+    public function connexion(){
+        return $this->getPDO();
+    }
     public function select($request){
         $req = $this->getPDO()->prepare($request);
         $req->execute();
@@ -35,8 +38,12 @@ class BD{
         return $data;
     }
 
+
     public function insert($table,$column = array()){
+
         $req=$this->getPDO()->prepare("insert into $table $column[0]=? , $column[1]? ,$column[2]=?");
-        
+        $req->execute(array(
+
+        ));
     }
 }

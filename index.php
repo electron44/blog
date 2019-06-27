@@ -6,7 +6,11 @@ if (PHP_VERSION <= "5.4"){
     echo "<p class='alert alert'>Veuillez MAJ votre version php vers une version plus récente </p><br>";
 }
 require 'Autoloader.class.php'; 
-Autoloader::register(); 
+Autoloader::register();
+$pdo = new BD('blog');
+$pdo =  $pdo->connexion();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
